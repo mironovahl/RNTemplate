@@ -7,13 +7,14 @@ import { colors } from 'src/theme/colors'
 
 const ButtonBlock = styled.TouchableOpacity<{ isDisabled?: boolean }>`
   opacity: ${ifProp('isDisabled', '0.55', '1')};
-  padding: 24px 36px;
+  padding: 5px 12px;
   border-radius: 24px;
 `
 const Title = styled.Text`
   font-family: 'Montserrat-Bold';
   text-align: center;
   color: ${colors.white};
+  font-size: 12px;
 `
 
 interface Props extends TouchableOpacityProps {

@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { CharacterScreen } from 'src/modules/character'
@@ -9,7 +8,6 @@ import { NavCharctIconDis } from 'src/resources/image/navigation/NavCharctIconDi
 import { NavEpisodeIconDis } from 'src/resources/image/navigation/NavEpisodeIconDis'
 import { NavLocationIconDis } from 'src/resources/image/navigation/NavLocationIconDis'
 import { colors } from 'src/theme/colors'
-import { FilterButton } from 'src/ui/filterButton'
 
 import { Routes } from './routes'
 
@@ -35,7 +33,7 @@ export const TabBar = () => {
             marginRight: 200,
             marginTop: 50,
           },
-          headerRight: () => <FilterButton />,
+
           tabBarIcon: ({ focused }) => <NavCharctIconDis />,
         }}
       />

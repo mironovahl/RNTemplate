@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { colors } from 'src/theme/colors'
@@ -17,9 +17,9 @@ const CustomText = styled.Text`
   color: ${colors.purple};
 `
 
-export const FilterButton = () => {
+export const FilterButton = ({ setIsVisible }) => {
   return (
-    <Container>
+    <Container onPress={() => setIsVisible(true)}>
       <CustomText>Filter</CustomText>
     </Container>
   )
