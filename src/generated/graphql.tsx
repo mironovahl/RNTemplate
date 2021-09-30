@@ -199,7 +199,9 @@ export type QueryLocationsByIdsArgs = {
   ids: Array<Scalars['ID']>
 }
 
-export type CharactersQueryVariables = Exact<{ [key: string]: never }>
+export type CharactersQueryVariables = Exact<{
+  page?: Maybe<Scalars['Int']>
+}>
 
 export type CharactersQuery = {
   __typename?: 'Query'
@@ -209,6 +211,7 @@ export type CharactersQuery = {
       Array<
         Maybe<{
           __typename?: 'Character'
+          id?: Maybe<string>
           name?: Maybe<string>
           status?: Maybe<string>
           image?: Maybe<string>
@@ -219,9 +222,10 @@ export type CharactersQuery = {
 }
 
 export const CharactersDocument = gql`
-  query Characters {
-    characters {
+  query Characters($page: Int) {
+    characters(page: $page) {
       results {
+        id
         name
         status
         image
@@ -242,6 +246,7 @@ export const CharactersDocument = gql`
  * @example
  * const { data, loading, error } = useCharactersQuery({
  *   variables: {
+ *      page: // value for 'page'
  *   },
  * });
  */
