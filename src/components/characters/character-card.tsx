@@ -7,7 +7,7 @@ import { colors } from 'src/theme/colors'
 const Container = styled.View`
   width: 163px;
   height: 219px;
-  background: #ffffff;
+  background: ${colors.white};
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   border-top-left-radius: 8px;
@@ -31,7 +31,7 @@ const Status = styled.Text`
   font-weight: 400;
   line-height: 13px;
   text-align: left;
-  color: ${colors.smallTextGray};
+  color: ${colors.gray[2]};
 `
 const Name = styled.Text`
   font-size: 17px;

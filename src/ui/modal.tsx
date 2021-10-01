@@ -2,8 +2,6 @@ import React, { FC } from 'react'
 import Modal from 'react-native-modal'
 import styled from 'styled-components/native'
 
-import { colors } from 'src/theme/colors'
-
 interface IModalMenu {
   showModal: boolean
   setShowModal: (showModal: boolean) => void

@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { FlatList, Text, TouchableOpacity } from 'react-native'
-import { useQuery } from '@apollo/client'
+import React, { useState } from 'react'
+import { FlatList, Text } from 'react-native'
 import { ICharacter } from 'interfaces/character/ICharacter'
 import styled from 'styled-components/native'
 
-import { useCharactersQuery } from 'src/generated/graphql'
-import { GET_ALL_CHARACTERS } from 'src/graphql/characters/queries'
+import { CharactersQuery, useCharactersQuery } from 'src/generated/graphql'
 
-import { CharacterCard } from './CharacterCard'
+import { CharacterCard } from './character-card'
 
-const CustomFlatList = styled.FlatList`
+const CustomFlatList = styled(FlatList)`
   width: 100%;
   flex-direction: column;
 `
+export type ExtractFromArray<T> = T extends Array<infer Item> ? Item : never
+type Character = ExtractFromArray<CharactersQuery['characters']['results']>
+
+interface IRenderItem {
+  item?: Character | null
+}
 
 export const CharactersList = () => {
-  interface IRenderItem {
-    item: ICharacter
-  }
-
   const [currentPage, setCurrentPage] = useState(1)
 
   const { data, loading, fetchMore } = useCharactersQuery({
@@ -36,8 +36,8 @@ export const CharactersList = () => {
         return {
           characters: {
             results: [
-              ...previousResult.characters.results,
-              ...fetchMoreResult.characters.results,
+              ...(previousResult?.characters?.results ?? []),
+              ...(fetchMoreResult?.characters?.results ?? []),
             ],
           },
         }
@@ -46,10 +46,7 @@ export const CharactersList = () => {
     setCurrentPage(currentPage + 1)
   }
 
-  console.log(currentPage)
-  console.log(data)
-
-  const renderItem = ({ item }: IRenderItem) => (
+  const renderItem = (item: Character) => (
     <CharacterCard name={item.name} status={item.status} image={item.image} />
   )
 
@@ -58,11 +55,10 @@ export const CharactersList = () => {
   }
 
   return (
-    <CustomFlatList
-      key={'#'}
+    <FlatList<Character>
       numColumns={2}
-      data={data.characters.results}
-      renderItem={renderItem}
+      data={data?.characters?.results}
+      renderItem={({ item }) => renderItem(item)}
       keyExtractor={(item) => item.name}
       onEndReachedThreshold={0.5}
       onEndReached={onEndReached}

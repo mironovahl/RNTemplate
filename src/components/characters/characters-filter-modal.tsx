@@ -1,5 +1,4 @@
 import React from 'react'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { colors } from 'src/theme/colors'
@@ -23,7 +22,19 @@ export const CharactersFilterModal = () => {
     <Container>
       <Header>
         <CustomText>Filter</CustomText>
-        <Button title={'APPLY'} style={{ backgroundColor: '#5856d6' }} />
+        <Button
+          title={'APPLY'}
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={{
+            backgroundColor: colors.purple,
+            paddingVertical: 5,
+            paddingHorizontal: 12,
+            borderTopLeftRadius: 24,
+            borderTopRightRadius: 24,
+            borderBottomLeftRadius: 24,
+            borderBottomRightRadius: 24,
+          }}
+        />
       </Header>
     </Container>
   )
