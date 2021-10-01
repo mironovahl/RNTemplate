@@ -21,17 +21,21 @@ const CustomText = styled.Text`
   color: ${colors.purple};
 `
 
+const StyledButton = styled(Button)`
+  width: 42;
+  height: 22;
+  margin-bottom: 40;
+  margin-right: 16;
+`
+
 export const CharacterScreen = () => {
   const [visible, setIsVisible] = useState(false)
   const navigation = useNavigation()
   navigation.setOptions({
     headerRight: () => (
-      <Button
-        onPress={() => setIsVisible(true)}
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{ width: 42, height: 22, marginBottom: 40, marginRight: 16 }}>
+      <StyledButton onPress={() => setIsVisible(true)}>
         <CustomText>Filter</CustomText>
-      </Button>
+      </StyledButton>
     ),
   })
 

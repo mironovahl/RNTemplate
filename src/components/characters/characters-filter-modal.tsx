@@ -15,26 +15,20 @@ const Header = styled.View`
   padding-top: 21px;
 `
 
+const StyledButton = styled(Button)`
+  background: ${colors.purple};
+  padding: 5px 12px;
+  border-radius: 24px;
+`
 const CustomText = styled.Text``
 
 export const CharactersFilterModal = () => {
   return (
     <Container>
       <Header>
-        <CustomText>Filter</CustomText>
-        <Button
-          title={'APPLY'}
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{
-            backgroundColor: colors.purple,
-            paddingVertical: 5,
-            paddingHorizontal: 12,
-            borderTopLeftRadius: 24,
-            borderTopRightRadius: 24,
-            borderBottomLeftRadius: 24,
-            borderBottomRightRadius: 24,
-          }}
-        />
+        <StyledButton title={'APPLY'}>
+          <CustomText>Filter</CustomText>
+        </StyledButton>
       </Header>
     </Container>
   )
